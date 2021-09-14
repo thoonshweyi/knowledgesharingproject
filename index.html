@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Knowledge Sharing Project</title>
+        <!-- bootstrap css1 js2-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+        <!-- fontawesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </head>
+    <style type="text/css">
+
+        .maps{
+            width: 100%;
+            min-height: 40vh;
+        }
+
+    </style>
+    <body>
+
+        <!-- Start Header Section-->
+        <header id="home">
+            <!-- Start Navbar -->
+                <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+                    <a href="index.html" class="navbar-brand mx-2">
+                        <img src="data:image/png;base64,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" width="50px" alt="logo"/>
+                        <span class="mx-2 text-light">Knowledge Sharing Co.,Ltd</span>
+                    </a>
+                    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav"><i class="navbar-toggler-icon"></i></button>
+
+                    <div class="navbar-collapse collapse justify-content-between" id="nav">
+                        <ul class="navbar-nav px-3">
+                            <li class="nav-item"><a href="#home" class="nav-link text-uppercase fw-bold text-light">Home</a></li>
+                            <li class="nav-item"><a href="#ebook" class="nav-link text-uppercase fw-bold text-light">Ebook</a></li>
+                            <li class="nav-item dropdown"><a href="#" class="nav-link text-uppercase fw-bold text-light dropdown-toggle" data-bs-toggle="dropdown">Software</a>
+                                <ul  class="dropdown-menu">
+                                    <li><a href="#software" class="dropdown-item">Andriod App</a></li>
+                                    <li><a href="#software" class="dropdown-item">IOS App</a></li>
+                                    <li><a href="#software" class="dropdown-item">Linux App</a></li>
+                                    <li><a href="#software" class="dropdown-item">Windows App</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item"><a href="#about" class="nav-link text-uppercase fw-bold text-light">About</a></li>
+                            <li class="nav-item"><a href="#contact" class="nav-link text-uppercase fw-bold text-light">Contact</a></li>
+                        </ul>
+                        <form class="px-3" action="" method="">
+                            <div class="input-group">
+                                <input type="text" name="search" id="search" class="form-control form-control-sm rounded-0" placeholder="Search..."/>
+                                <span class="input-group-text"><i class="fas fa-search"></i></span>
+                            </div>
+                        </form>
+                    </div>
+
+                </nav>
+            <!-- End Navbar -->
+
+            <!-- Start Banner -->
+                <section>
+                    <div class="container-fluid">
+                        <div class="row bg-info justify-content-center align-items-center" style='height:100vh;'>
+                            <div class="col-md-10 text-center">
+                                <h1 class="text-capitalize display-2"><span class="text-white">knowledge sharing</span><span class="text-primary"> website</span></h1>
+                                <h2 class="text-light fw-light fst-italic">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</h2>
+                                <a href="#" class="btn btn-warning btn-lg rounded-0 px-4 m-3" data-bs-toggle="modal" data-bs-target="#loginmodal">Login Here</a>
+                                <a href="#" class="btn btn-danger btn-lg rounded-0 px-4 m-3" >Register Here</a>
+                            </div> 
+                        </div>
+                    </div>
+                </section>
+            <!-- End Banner -->
+        </header>
+        <!-- End Header Section -->
+
+        <!-- Start Ebook Section -->
+        <section id="ebook" class="bg-light p-5">
+                <div class="container-fluid">
+                    <!-- start title -->
+                    <div class="col-12 text-center">
+                        <h1 class="text-warning display-3">Ebook</h1>
+                        <p class="text-muted lead">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                    </div>
+                    <!-- end title -->
+
+                    <div class="row text-center">
+                        <div class="col-lg-4 col-sm-10 mx-auto mb-5">
+                            <i class="fas fa-desktop fa-6x text-warning mb-3"></i>
+                            <h1 class="text-secondary">Technology</h1>
+                            <p class="text-muted">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                            <a href="#" class="btn btn-outline-warning">Learn More</a>
+                        </div>
+
+                        <div class="col-lg-4 col-sm-10 mx-auto mb-5">
+                            <i class="fas fa-edit fa-6x text-warning mb-3"></i>
+                            <h1 class="text-secondary">Design</h1>
+                            <p class="text-muted">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                            <a href="#" class="btn btn-outline-warning">Learn More</a>
+                        </div>
+
+                        <div class="col-lg-4 col-sm-10 mx-auto mb-5">
+                            <i class="fas fa-shopping-basket fa-6x text-warning mb-3"></i>
+                            <h1 class="text-secondary">Cook</h1>
+                            <p class="text-muted">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                            <a href="#" class="btn btn-outline-warning">Learn More</a>
+                        </div>
+                    </div>
+
+                </div>
+        </section>
+
+        <!-- End Ebook Section -->
+
+
+        <!-- Start Software Section -->
+        <section id="software">
+            <div class="container-fluid">
+                <!-- start title -->
+                <div class="col-12 text-center">
+                    <h1 class="text-warning display-3">Software</h1>
+                    <p class="text-muted lead">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                </div>
+                <!-- end title -->
+
+                <div class="row text-center">
+
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                        <img src="https://st1.bgr.in/wp-content/uploads/2018/10/android-green-lego-poster-googleblog.jpg" class="img-thumbnail" alt="andriod"/>
+                        <h3 class="text-warning my-3">Andriod Application</h3>
+                        <p class="text-muted">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                        <img src="https://mytechmyanmar.com/wp-content/uploads/2020/04/appstore.jpg" class="img-thumbnail" alt="andriod"/>
+                        <h3 class="text-warning my-3">IOS Application</h3>
+                        <p class="text-muted">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                        <img src="https://i.ytimg.com/vi/8WbyB_2HthM/maxresdefault.jpg" class="img-thumbnail" alt="andriod"/>
+                        <h3 class="text-warning my-3">Linux Application</h3>
+                        <p class="text-muted">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                        <img src="https://i.pcmag.com/imagery/lineups/06xskoAKsVIlA7WdtvUGQmT-1.1577756249.fit_lim.size_1182x667.jpg" class="img-thumbnail" alt="andriod"/>
+                        <h3 class="text-warning my-3">Window Application</h3>
+                        <p class="text-muted">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                    </div>
+
+
+                </div>
+            </div>
+        </section>
+        <!-- End Software Section -->
+        
+
+
+        <!-- Start Team Section -->
+        <section id="about" class="bg-secondary p-5">
+            <div class="container-fluid">
+                <!-- start title -->
+                <div class="col-12 text-center">
+                    <h1 class="text-warning display-3">Team</h1>
+                </div>
+                <!-- end title -->
+
+                <div class="row">
+                    <div class="col-lg-4 col-sm-10 mx-auto mb-4">
+                        <div class="card">
+                            <img src="https://dpbnri2zg3lc2.cloudfront.net/en/wp-content/uploads/2021/01/Sam-CF.jpg" alt="user1">
+                            <div class="card-body">
+                                <div class="card-title">
+                                    <h3 class="text-muted">Mr.Pyae Phyo Paing</h3>
+                                </div>
+                                <div class="card-subtitle">
+                                    <p class="lead">Founder And CEO</p>
+                                </div>
+                                <div class="float-end">
+                                    <a href="#"><i class="fab fa-facebook fa-2x text-primary"></i></a>
+                                    <a href="#"><i class="fab fa-twitter fa-2x text-info"></i></a>
+                                    <a href="#"><i class="fab fa-youtube fa-2x text-danger"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-sm-10 mx-auto mb-4">
+                        <div class="card">
+                            <img src="https://www.boemagazine.com/wp-content/uploads/2019/11/blur-businesswoman-caucasian-941555.jpg" alt="user2">
+                            <div class="card-body">
+                                <div class="card-title">
+                                    <h3 class="text-muted">Ms.Khin Myat Noe</h3>
+                                </div>
+                                <div class="card-subtitle">
+                                    <p class="lead">Operation Manager</p>
+                                </div>
+                                <div class="float-end">
+                                    <a href="#"><i class="fab fa-facebook fa-2x text-primary"></i></a>
+                                    <a href="#"><i class="fab fa-twitter fa-2x text-info"></i></a>
+                                    <a href="#"><i class="fab fa-youtube fa-2x text-danger"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-sm-10 mx-auto mb-4">
+                        <div class="card">
+                            <img src="https://dpbnri2zg3lc2.cloudfront.net/en/wp-content/uploads/2021/01/what-is-the-difference-web-developer-web-designer.jpg" alt="user3">
+                            <div class="card-body">
+                                <div class="card-title">
+                                    <h3 class="text-muted">Mr.Htet Paing</h3>
+                                </div>
+                                <div class="card-subtitle">
+                                    <p class="lead">Project Manager</p>
+                                </div>
+                                <div class="float-end">
+                                    <a href="#"><i class="fab fa-facebook fa-2x text-primary"></i></a>
+                                    <a href="#"><i class="fab fa-twitter fa-2x text-info"></i></a>
+                                    <a href="#"><i class="fab fa-youtube fa-2x text-danger"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- End Team Section -->
+
+        <!-- Start Public Interest Section -->
+        <section class="p-5">
+            <div class="container-fluid">
+                <!-- start title -->
+                <div class="col-12 text-center">
+                    <h1 class="text-warning display-3">Public Interest</h1>
+                    <p class="text-muted lead">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                </div>
+                <!-- end title -->
+
+                <div class="row">
+                    <div class="col-lg-6 col-sm-10 mx-auto">
+                        <h3>Ebook</h3>
+                        <div class="progress mb-3">
+                            <div class="progress-bar bg-primary progress-bar-striped" style="width:25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                        </div>
+
+                        <h3>Andriod Applicatin</h3>
+                        <div class="progress mb-3">
+                            <div class="progress-bar bg-secondary progress-bar-striped" style="width:25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                        </div>
+
+                        <h3>IOS Appplicaton</h3>
+                        <div class="progress mb-3">
+                            <div class="progress-bar bg-success progress-bar-striped" style="width:15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100">15%</div>
+                        </div>
+
+                        <h3>Linux Appplicaton</h3>
+                        <div class="progress mb-3">
+                            <div class="progress-bar bg-danger progress-bar-striped" style="width:5%" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100">5%</div>
+                        </div>
+
+                        <h3>Window Appplicaton</h3>
+                        <div class="progress mb-3">
+                            <div class="progress-bar bg-info progress-bar-striped" style="width:30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">30%</div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </section>
+        <!-- End Public Interest Section -->
+
+        <!-- Start Contact Section -->
+
+        <section id="contact" class="bg-light my-3">
+
+            <div class="container-fluid">
+
+                <!-- start title -->
+                <div class="col-12 text-center">
+                    <h1 class="text-warning display-3">Contact Us</h1>
+                    <p class="text-muted lead">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                </div>
+                <!-- end title -->
+
+                <div class="row">
+
+                    <div class="col-lg-6 col-md-8 col-sm-10 mx-auto">
+
+                        <div class="card">
+                            <div class="card-header">
+
+                                <h5>Office Location</h5>
+
+                            </div>
+
+                            <div class="card-body">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d59211.6335690032!2d96.07983947910155!3d21.945040400000007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30cb6dc4fa6a35e3%3A0xf90b09f267699462!2sHnin%20Si%20Khin!5e0!3m2!1sen!2smm!4v1631527791732!5m2!1sen!2smm" class="maps" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                            </div>
+
+                            <div class="card-footer">
+                                <p>Phone : 094220422422</p>
+                                <p>Email : info@knowledgesharing.com</p>
+                                <p>Address : N0.123, Myittar St,Mandalay.</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-6 col-md-8 col-sm-10 mx-auto">
+
+                        <div class="text-center text-muted mt-5">
+                            <h3>Got Questions?</h3>
+                            <p>Stay Connected</p>
+                        </div>
+
+                        <form action="" method="">
+
+                            <div class="form-group col-md-12 mb-3">
+                                <label for="name">Name</label>
+                                <input type="text" name="name" id="name" class="form-control form-control-sm rounded-0" placeholder="Enter your name">
+                            </div>
+
+                            <div class="form-group col-md-12 mb-3">
+                                <label for="email">Email</label>
+                                <input type="emai" name="email" id="email" class="form-control form-control-sm rounded-0" placeholder="Enter your email"/>
+
+                            </div>
+
+                            <div class="form-group col-md-12 mb-3">
+                                <label for="message">Message</label>
+                                <textarea name="message" id="message" class="form-control rounded-0" rows="3" placeholder="Enter your message here"></textarea>
+                            </div>
+
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-warning rounded-0">Submit</button>
+                            </div>
+
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+
+
+            </div>
+
+        </section>
+
+        <!-- End Contact Section -->
+
+
+        <!-- Start Footer Section -->
+        <footer class="bg-secondary p-3">
+
+            <!-- Start Viber ELFSIGHT.COM For VIBER -->
+            <script src="https://apps.elfsight.com/p/platform.js" defer></script>
+            <div class="elfsight-app-1ca317ec-1809-4504-981f-68d1bfc1416e"></div>
+             <!-- End Viber ELFSIGHT.COM For VIBER -->
+
+            <div class="container-fluid">
+                <div class="col-12 text-center">
+                    <h3 class="text-light text-uppercase fw-light">Knowledge Sharing Project</h3>
+                    <h5 class="text-light fw-light fst-italic">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h5>
+                
+                    <div class="py-3">
+                        <a href="#" target="_blank"><i class="fab fa-facebook fa-2x text-primary mx-3"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-youtube fa-2x text-danger mx-3"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-twitter fa-2x text-info mx-3"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-google-plus fa-2x text-danger mx-3"></i></a>
+                    </div>
+
+                    <p class="text-light m-0">&copy; Copyright <span id="autoyear"></span> - Made by DLT Co.,Ltd</p>
+                </div>
+            </div>
+
+        </footer>
+        <!-- End Footer Section -->
+
+        <!-- Modal Size
+            standart size(default)
+            modal-xl
+            modal-lg
+            modal-md(standart size)
+            modal-sm
+
+            Full Size
+            modal-fullscreen
+            modal-fullscreen-sm-down (smaller than sm will fullscreen)
+            modal-fullscreen-md-down (smaller than md will fullscreen)
+            modal-fullscreen-lg-down (smaller than lg will fullscreen)
+            modal-fullscreen-xl-down (smaller than xl will fullscreen)
+            modal-fullscreen-xxl-down (smaller than xxl will fullscreen)
+        -->
+
+        <!-- Start Modal Area -->
+
+            <!-- start login modal -->
+                <div id="loginmodal" class="modal">
+                    <div class="modal-dialog modal-dialog-centered modal-fullscreen-lg-down">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Login Here</h5>
+                                <button class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+    
+                            <div class="modal-body">
+                                <div class="col-12">
+                                    <form action="" method="">
+                                        <div class="form-group mb-4">
+                                            <label for="loginemail">Email</label>
+                                            <input type="email" name="loginemail" id="loginemail" class="form-control form-control-sm rounded-0" placeholder="Enter your email address">
+                                        </div>
+                                        <div class="form-group mb-4">
+                                            <label for="loginpassword">Password</label>
+                                            <input type="password" name="loginpassword" id="loginpassword" class="form-control form-control-sm rounded-0" placeholder="Enter your password">
+                                        </div>
+                                        <div class="d-flex justify-content-end">
+                                            <button class="btn btn-secondary btn-sm mx-3">Cancle</button>
+                                            <button type="submit" class="btn btn-primary btn-sm">Login</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+    
+                            <div class="modal-footer">
+                                <p>Not Register ! <a href="#">Signup Here</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <!-- end login modal -->
+
+            
+
+        <!-- End Modal Area -->
+
+        <!-- bootstrap css1 js2 -->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
+        <!-- jquery -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" type="text/javascript"></script>
+
+        <script type="text/javascript">
+            const autoyear = document.getElementById('autoyear');
+
+            const date = new Date();
+
+            const getyear = date.getUTCFullYear();
+            autoyear.textContent = getyear;
+        </script>
+    </body>
+</html>
